@@ -45,6 +45,12 @@ private:
     }
 
 public:
+    Huffman()
+    {
+        this->root = nullptr;
+        this->encoded = "";
+    }
+
     void huffEncode(const std::string &text)
     {
         int freq[256];
@@ -87,6 +93,11 @@ public:
         for (char c: text)
             ans += book[c];
         this->encoded = ans;
+    }
+
+    std::string getEncoded()
+    {
+        return this->encoded;
     }
 
 };
