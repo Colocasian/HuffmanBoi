@@ -29,7 +29,7 @@ public:
         for (char x: text)
             freq[x]++;
 
-        // To be continued
+        // Counted the freq...
     }
 
 };
