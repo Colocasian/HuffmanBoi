@@ -1,4 +1,5 @@
-#pragma once
+#ifndef _HAS_INCLUDED_HUFFMAN_TREE_BY_RISHVIC
+#define _HAS_INCLUDED_HUFFMAN_TREE_BY_RISHVIC
 
 #include <exception>
 #include <string>
@@ -88,3 +89,6 @@ private:
         }
     };
 };
+
+#endif
+
