@@ -16,6 +16,9 @@ private:
         int freq;
     } huffQueue;
 
+    huffNode* key;
+    std::string encoded;
+
     class HuffPrior {
     private:
         huffQueue qu[257];
@@ -36,7 +39,7 @@ private:
 
         bool size() { return top; }
 
-        void insert(huffNode* root, int freq)
+        void push(huffNode* root, int freq)
         {
             qu[++top].tree = root;
             qu[top].freq = freq;
@@ -87,8 +90,47 @@ private:
                 throw new std::exception;
             return qu[1].tree;
         }
+
+        int peekFreq()
+        {
+            if (top == 0)
+                throw new std::exception;
+            return qu[1].freq;
+        }
+
+        huffNode* process()
+        {
+            if (top == 0)
+                return nullptr;
+
+            while (top > 1) {
+                huffNode* left = this->peek();
+                int freq = this->peekFreq();
+                this->pop();
+                huffNode* right = this->peek();
+                freq += this->peekFreq();
+                this->pop();
+
+                huffNode* n = new huffNode;
+                n->c = '\0';
+                n->left = left;
+                n->right = right;
+                this->push(n, freq);
+            }
+            return this->peek();
+        }
     };
+
+public:
+    Huffman()
+    {
+        this->key = nullptr;
+        this->encoded = "";
+    }
+
+    std::string getEncoded() { return this->encoded; }
+
+    void encode(std::string text) {}
 };
 
 #endif
-
