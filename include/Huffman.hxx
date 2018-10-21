@@ -3,6 +3,7 @@
 
 #include <exception>
 #include <string>
+#include <vector>
 
 class Huffman {
 private:
@@ -121,6 +122,23 @@ private:
         }
     };
 
+    void createBook(huffNode *key, std::string res, std::vector<std::string> &book)
+    {
+        if (key != nullptr)
+        {
+            if (key->c != '\0')
+                book[(int)key->c] = res;
+            createBook(key->left, res+"0", book);
+            createBook(key->right, res+"1", book);
+        }
+    }
+    std::vector<std::string> createBook(huffNode *key)
+    {
+        std::vector<std::string> book(256, "");
+        createBook(key, "", book);
+        return book;
+    }
+
 public:
     Huffman()
     {
@@ -130,7 +148,32 @@ public:
 
     std::string getEncoded() { return this->encoded; }
 
-    void encode(std::string text) {}
+    void encode(std::string text)
+    {
+        int count[256];
+        for (int i = 0; i < 256; i++)
+            count[i] = 0;
+        for (char x : text)
+            count[(int)x]++;
+
+        HuffPrior grinder;
+
+        for (int i = 0; i < 256; i++) {
+            if (count[i] != 0) {
+                huffNode* n = new huffNode;
+                n->c = (char)i;
+                n->right = nullptr;
+                n->left = nullptr;
+                grinder.push(n, count[i]);
+            }
+        }
+
+        this->key = grinder.process();
+        std::vector<std::string> book(createBook(this->key));
+        this->encoded = "";
+        for (char x: text)
+            this->encoded += book[(int)x];
+    }
 };
 
 #endif
