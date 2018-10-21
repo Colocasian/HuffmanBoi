@@ -1,4 +1,4 @@
-#include "../include/Huffman.hxx"
+#include "../include/Huffman.h"
 #include <iostream>
 #include <string>
 
@@ -21,10 +21,13 @@ int main()
     Huffman yolo;
     yolo.encode(yolos);
     std::cout << yolo.getEncoded() << std::endl
+              << std::endl
               << "Original number of bits: "
               << yolos.length() * sizeof(char) * 8 << std::endl
               << "No. of bits used: " << yolo.getEncoded().length()
-              << std::endl;
+              << std::endl
+              << std::endl
+              << "Decoded:" << std::endl
+              << yolo.decode() << std::endl;
     return 0;
 }
-

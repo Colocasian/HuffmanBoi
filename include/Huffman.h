@@ -122,17 +122,17 @@ private:
         }
     };
 
-    void createBook(huffNode *key, std::string res, std::vector<std::string> &book)
+    void createBook(
+        huffNode* key, std::string res, std::vector<std::string>& book)
     {
-        if (key != nullptr)
-        {
+        if (key != nullptr) {
             if (key->c != '\0')
                 book[(int)key->c] = res;
-            createBook(key->left, res+"0", book);
-            createBook(key->right, res+"1", book);
+            createBook(key->left, res + "0", book);
+            createBook(key->right, res + "1", book);
         }
     }
-    std::vector<std::string> createBook(huffNode *key)
+    std::vector<std::string> createBook(huffNode* key)
     {
         std::vector<std::string> book(256, "");
         createBook(key, "", book);
@@ -171,8 +171,27 @@ public:
         this->key = grinder.process();
         std::vector<std::string> book(createBook(this->key));
         this->encoded = "";
-        for (char x: text)
+        for (char x : text)
             this->encoded += book[(int)x];
+    }
+
+    std::string decode()
+    {
+        std::string ans;
+        huffNode* ptr = this->key;
+
+        for (char x : this->encoded) {
+            if (x == '0')
+                ptr = ptr->left;
+            else
+                ptr = ptr->right;
+            if (ptr->c != '\0') {
+                ans += ptr->c;
+                ptr = this->key;
+            }
+        }
+
+        return ans;
     }
 };
 
