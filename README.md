@@ -24,5 +24,7 @@ g++ ./src/main.cpp -o ./bin/run
 ```
 To run, just execute `./bin/run` in your command line
 
-### If you want to help,
+
+
+### If you want to commit or help,
 Anybody is welcome to help, just send me a message.
