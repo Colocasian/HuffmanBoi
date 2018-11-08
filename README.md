@@ -6,5 +6,23 @@ Huffman encoding generates a *Tree with Minimum Weighted Path Length (External)*
 For more details on Huffman coding, [click
 here](https://en.wikipedia.org/wiki/Huffman_coding) to be redirected to Wiki page.
 
+### How to install
+#### Common
+To clone the repository,
+```
+git clone https://github.com/Colocasian/HuffmanBoi.git
+cd HuffmanBoi
+```
+##### Linux or MacOS
+```
+./install.sh
+```
+##### Windows
+```
+mkdir bin
+g++ ./src/main.cpp -o ./bin/run
+```
+To run, just execute `./bin/run` in your command line
+
 ### If you want to help,
 Anybody is welcome to help, just send me a message.
