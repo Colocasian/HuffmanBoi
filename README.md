@@ -5,3 +5,6 @@ This is a showcase for the **Huffman Encoding** using C++
 Huffman encoding generates a *Tree with Minimum Weighted Path Length (External)* in such a way that the more frequently used characters are encoded with lesser bits
 For more details on Huffman coding, [click
 here](https://en.wikipedia.org/wiki/Huffman_coding) to be redirected to Wiki page.
+
+### If you want to help,
+Anybody is welcome to help, just send me a message.
