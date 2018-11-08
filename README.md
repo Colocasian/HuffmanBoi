@@ -17,6 +17,7 @@ cd HuffmanBoi
 ```
 ./install.sh
 ```
+(Just in case installer is not working, run `chmod +x ./install.sh`)
 ##### Windows
 ```
 mkdir bin
