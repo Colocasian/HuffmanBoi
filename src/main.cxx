@@ -29,9 +29,9 @@ int main(int argc, char const *argv[])
 
     Huffman machine;
     machine.encode(body);
-    cout << "Encoded string" << endl;
+    cout << "Encoded string" << endl << endl;
 
+    cout << "DECODED:" << endl;
     cout << machine.decode() << endl;
-    cout << "Decoded string" << endl;
     return 0;
 }

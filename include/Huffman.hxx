@@ -178,19 +178,22 @@ public:
         std::vector<std::string> book(128);
         this->createBook(this->key, book, "");
 
+        int sz = 0;
+        for (char x: text)
+            sz += book[(int)x].length();
+        this->encoded.resize((sz + 7) / 8);
+        this->rem = sz % 8;
+
         int at = 0;
         for (char x: text)
         {
             for (char y: book[(int)x])
             {
-                if (at % 8 == 0)
-                    this->encoded.push_back((char)0);
                 if (y == '1')
-                    this->encoded[at / 8] &= (1 << (at % 8));
+                    this->encoded[at / 8] |= (1 << (at % 8));
                 at++;
             }
         }
-        this->rem = at % 8;
     }
 
     std::string decode()
