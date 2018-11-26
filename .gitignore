@@ -1,0 +1,5 @@
+# Ignore the VSCode specific files
+.vscode
+
+# Ignore the executables
+bin/*
